@@ -28,11 +28,7 @@ export const step2Schema = z.object({
 
 export const step3Schema = z.object({
   username: usernameSchema,
-  website: z
-    .string()
-    .url()
-    .optional()
-    .transform((v) => v ?? ""),
+  website: z.string().url().optional().or(z.literal("")),
 });
 
 export const step4Schema = z.object({
