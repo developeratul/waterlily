@@ -47,4 +47,21 @@ export const onboardingRouter = createTRPCRouter({
 
       return { success: true } as const;
     }),
+  get: protectedProcedure.query(async ({ ctx }) => {
+    const { db, user } = ctx;
+
+    const onboardingData = await db.query.user.findFirst({
+      where: (t, { eq }) => eq(t.id, user.id),
+      columns: {
+        fullName: true,
+        bio: true,
+        role: true,
+        interests: true,
+        username: true,
+        website: true,
+      },
+    });
+
+    return onboardingData;
+  }),
 });

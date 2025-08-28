@@ -19,7 +19,12 @@ export function MultiStepForm() {
   const submitMutation = api.onboarding.submit.useMutation();
   const form = useForm({
     resolver: zodResolver(fullSchema),
-    defaultValues: {},
+    defaultValues: {
+      fullName: "",
+      bio: "",
+      username: "",
+      website: "",
+    },
     mode: "onSubmit",
     reValidateMode: "onChange",
   });
