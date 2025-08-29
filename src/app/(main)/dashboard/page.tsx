@@ -3,7 +3,7 @@ import { api, HydrateClient } from "@/trpc/server";
 import { Suspense } from "react";
 import UserDetailsCard from "./user-details.client";
 
-export default async function Page() {
+export default function Page() {
   void api.onboarding.get.prefetch();
 
   return (
